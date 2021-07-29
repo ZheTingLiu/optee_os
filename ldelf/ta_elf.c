@@ -1355,7 +1355,9 @@ void ta_elf_print_mappings(void *pctx, print_func_t print_func,
 						continue;
 					}
 				}
+#if !defined(__clang__)
 				assert(maps[map_idx].sz == sz);
+#endif
 			} else if (maps[map_idx].va < va) {
 				if (maps[map_idx].va == mpool_base)
 					f |= DUMP_MAP_LDELF;
